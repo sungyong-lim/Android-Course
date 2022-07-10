@@ -1,4 +1,4 @@
-package Collections
+package collections
 
 /** 코틀린 켈렉션(Kotlin Collections) **/
 /*
