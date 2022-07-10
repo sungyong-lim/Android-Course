@@ -1,4 +1,4 @@
-package Class
+package classes
 
 // OOP(Object Oriented Programming)
 // The 5 basic concepts

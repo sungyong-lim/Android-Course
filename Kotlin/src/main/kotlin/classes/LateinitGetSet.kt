@@ -1,4 +1,4 @@
-package Class
+package classes
 
 fun main() {
     var user = Car()

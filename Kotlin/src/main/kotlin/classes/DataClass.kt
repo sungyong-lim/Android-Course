@@ -1,4 +1,4 @@
-package Class
+package classes
 
 // 데이터 클래스 생성
 // 데이터클래스는 주생성자가 매개변수 하나는 꼭 있어여함
