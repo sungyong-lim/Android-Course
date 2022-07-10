@@ -1,3 +1,5 @@
+package Collections
+
 /** 코틀린 켈렉션(Kotlin Collections) **/
 /*
     * 컬렉션 분류
