@@ -1,3 +1,5 @@
+package Class
+
 fun main() {
 
     var user = Persons("Lim", "sy", 26)

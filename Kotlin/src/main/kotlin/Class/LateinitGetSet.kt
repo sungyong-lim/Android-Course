@@ -1,3 +1,5 @@
+package Class
+
 fun main() {
     var user = Car()
     println(user.owner)
