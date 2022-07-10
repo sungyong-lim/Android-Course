@@ -14,6 +14,7 @@
         - 상속받게 하려면 "open class ClassName{}" open 키워드를 사용해야함
 */
 
+package more
 open class Base() {
     var a  = 1 // public => 기본값 아무것도 적지 않으면 자동으로 public 부여됨
     private var b = 2 // private 이기 때문에 Base 클래스 안에서만 사용 가능
