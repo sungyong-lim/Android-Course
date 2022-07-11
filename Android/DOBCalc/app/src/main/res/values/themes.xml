@@ -3,7 +3,7 @@
     <style name="Theme.DOBCalc" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">
-            @color/purple_500
+            @color/textBlue
         </item>
         <item name="colorPrimaryVariant">
             @color/purple_700
