@@ -11,4 +11,12 @@
     <color name="bgColor">#F3E2B9</color>
     <color name="btnBgColor">#2A9D8F</color>
     <color name="lightGrey">#b7b7a4</color>
+
+    <!-- In Hours Color -->
+    <color name="hourBgColor">#dad7cd</color>
+    <color name="hourTextColor">#588157</color>
+    <color name="hourBoxColor">#3a5a40</color>
+    <color name="hourBtnColor">#a3b18a</color>
+
+    <color name="mainBgColor">#FF00668B</color>
 </resources>

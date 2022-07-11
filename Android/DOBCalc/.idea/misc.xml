@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/DOBCalc/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/DOBCalc/app/src/main/res/drawable/selectbtn.xml" value="0.222" />
+        <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/DOBCalc/app/src/main/res/layout/activity_hours.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/DOBCalc/app/src/main/res/layout/activity_hours_minutes.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/DOBCalc/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/DOBCalc/app/src/main/res/layout/activity_main2.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/DOBCalc/app/src/main/res/layout/activity_minutes.xml" value="0.2" />
       </map>
     </option>
   </component>

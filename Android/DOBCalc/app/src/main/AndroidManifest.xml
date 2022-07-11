@@ -12,6 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DOBCalc"
         tools:targetApi="31">
+        <activity
+            android:name=".HoursMinutesActivity"
+            android:exported="false" />
+        <activity android:name=".HoursActivity"
+            android:exported="false" />
+        <activity android:name=".MinutesActivity"
+            android:exported="false" />
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
