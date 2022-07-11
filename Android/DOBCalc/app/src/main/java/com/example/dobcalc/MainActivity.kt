@@ -58,21 +58,27 @@ class MainActivity : AppCompatActivity() {
 
            // null 안정성
            // "Date"를 선택 했을 시 아래 코드를 실행 -> 그렇지 않으면 실행 X
+            theDate?.let {
+                // 1970년 부터 선택한 시간이 얼마나 지났는지 알 수 있음
+                // 60000으로 나누는 이유 => 초 단위로 바뀌도록 10000을 나누고 분 단위로 나오게 60으로 나눠야함
+                //                         이걸 합쳐서 60000으로 나눔
+                val selectedDateInMinutes = theDate.time / 60000 // 선택한 날짜와 1970년 1월 1일 사이에 지난 시간을 구하는 변수 생성
 
-            // 1970년 부터 선택한 시간이 얼마나 지났는지 알 수 있음
-            // 60000으로 나누는 이유 => 초 단위로 바뀌도록 10000을 나누고 분 단위로 나오게 60으로 나눠야함
-            //                         이걸 합쳐서 60000으로 나눔
-            val selectedDateInMinutes = theDate.time / 60000 // 선택한 날짜와 1970년 1월 1일 사이에 지난 시간을 구하는 변수 생성
+                // currentTimeMillis => 1970년 1월 1일 부터 지난 시간을 ms 단위로 알려줌
+                val currentDate = sdf.parse(sdf.format(System.currentTimeMillis())) // 현재 시각을 구함
 
-            // currentTimeMillis => 1970년 1월 1일 부터 지난 시간을 ms 단위로 알려줌
-            val currentDate = sdf.parse(sdf.format(System.currentTimeMillis())) // 현재 시각을 구함
 
-            val currentDateInMinutes = currentDate.time / 60000 // 분단위로 계산하기 위한 변수 생성
+                // null 안전성
+                currentDate?.let {
+                    val currentDateInMinutes = currentDate.time / 60000 // 분단위로 계산하기 위한 변수 생성
 
-            val differenceInMinutes = currentDateInMinutes - selectedDateInMinutes // 현재 시간과 선택한 시간의 차
+                    val differenceInMinutes = currentDateInMinutes - selectedDateInMinutes // 현재 시간과 선택한 시간의 차
 
-            // "TextView"에 "text"를 변경
-            tvAgeInMinutes?.text = differenceInMinutes.toString()
+                    // "TextView"에 "text"를 변경
+                    tvAgeInMinutes?.text = differenceInMinutes.toString()
+                }
+
+            }
         }, year, month, day )
 
         // 한시간은 360만 밀리초 이기 때문에 거기에 24를 곱하면
