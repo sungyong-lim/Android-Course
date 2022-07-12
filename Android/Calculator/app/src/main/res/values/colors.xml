@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_grey">#EFEFEF</color>
+    <color name="btnColor">#D6D6D6</color>
+    <color name="appBarColor">#91A3AE</color>
+    <color name="statusBarColor">#637380</color>
 </resources>
