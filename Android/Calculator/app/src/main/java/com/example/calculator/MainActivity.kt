@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         tvInput = findViewById(R.id.tvInput)
 
-
+        // 숫자 버튼 onClick
         btnOne.setOnClickListener { onDigit(btnOne) }
         btnTwo.setOnClickListener { onDigit(btnTwo) }
         btnThree.setOnClickListener { onDigit(btnThree) }
@@ -36,11 +36,14 @@ class MainActivity : AppCompatActivity() {
         btnEight.setOnClickListener { onDigit(btnEight) }
         btnNine.setOnClickListener { onDigit(btnNine) }
         btnZero.setOnClickListener { onDigit(btnZero) }
-
+        
+        // 전체 지우기 버튼  onClick
         btnClr.setOnClickListener { onClear(btnClr) }
 
+        // 소수점 버튼 onClick
         btnDot.setOnClickListener { onDecimalPoint(btnDot) }
 
+        // 연산자 버튼 onClick
         btnPlus.setOnClickListener { onOperator(btnPlus) }
         btnSub.setOnClickListener { onOperator(btnSub) }
         btnMul.setOnClickListener { onOperator(btnMul) }
@@ -93,10 +96,8 @@ class MainActivity : AppCompatActivity() {
         return if(value.startsWith("-")) {
             false // 특정 문자("-") 무시
         } else {
-            value.contains("/")
-                    || value.contains("*")
-                    || value.contains("+")
-                    || value.contains("-")
+            println(value.contains("/"))
+            value.contains("/") || value.contains("*") || value.contains("+") || value.contains("-")
         }
     }
 
