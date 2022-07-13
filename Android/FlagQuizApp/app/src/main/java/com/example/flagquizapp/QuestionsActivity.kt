@@ -3,6 +3,7 @@ package com.example.flagquizapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import kotlinx.android.synthetic.main.activity_questions.*
 
 class QuestionsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,5 +12,7 @@ class QuestionsActivity : AppCompatActivity() {
 
         val questionList = Constants.getQuestions()
         Log.i("QuestionList size : ", " ${questionList.size}")
+
+
     }
 }
