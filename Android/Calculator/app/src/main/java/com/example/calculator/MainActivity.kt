@@ -23,6 +23,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // 액션바 로고
+        var actionBar = supportActionBar
+        actionBar?.setIcon(R.drawable.logo)
+        actionBar?.setDisplayUseLogoEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
+
         tvInput = findViewById(R.id.tvInput)
 
         // 숫자 버튼 onClick
@@ -51,6 +57,9 @@ class MainActivity : AppCompatActivity() {
         
         // 등호 버튼 onClick 
         btnEqual.setOnClickListener { onEqual(btnEqual) }
+
+        // Back 버튼 onClick
+        btnBack.setOnClickListener { onBack(btnBack) }
 
     }
 
@@ -195,6 +204,17 @@ class MainActivity : AppCompatActivity() {
             println(value.contains("/"))
             value.contains("/") || value.contains("*") || value.contains("+") || value.contains("-")
         }
+    }
+
+    // 문자열 한개씩 제거하는 메서드
+    private fun onBack(v: View) {
+        var tvValue = tvInput?.text.toString()
+        if(tvValue.isNotEmpty()){
+            tvValue = tvValue?.substring(0, tvValue.length - 1).toString()
+            println(tvValue)
+            tvInput?.text =  tvValue
+        }
+
     }
 
 }

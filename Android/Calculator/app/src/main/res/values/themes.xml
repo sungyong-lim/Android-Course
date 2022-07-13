@@ -8,6 +8,9 @@
         <item name="colorPrimaryVariant">
             @color/statusBarColor
         </item>
+        <item name="toolbarStyle">
+            @style/CustomToolBar
+        </item>
         <item name="colorOnPrimary">@color/black
         </item>
         <!-- Secondary brand color. -->
@@ -26,5 +29,9 @@
             ?attr/colorPrimaryVariant
         </item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="CustomToolBar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="titleTextColor">@color/black</item>
     </style>
 </resources>
