@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 
 // 요소를 클릭할 수 있게 만들기 위해 onClickListener 생성
@@ -61,15 +58,15 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
             Log.e("Questions", i.question)
         }*/
 
-        setQuestion(mQuestionsList!!)
+        setQuestion()
 
         defaultOptionsView()
 
 
     }
 
-    private fun setQuestion(questionList: ArrayList<Question>) {
-
+    private fun setQuestion() {
+        defaultOptionsView()
         val question: Question = mQuestionsList!![mCurrentPosition - 1]
         Log.i("list", question.toString())
 
@@ -87,7 +84,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         
         // 마지막 문제일 경우 버튼 Text 변경 
         if(mCurrentPosition == mQuestionsList!!.size){
-            btnSubmit?.text = "종료"
+            btnSubmit?.text = "제출하기"
         } else {
             btnSubmit?.text = "확인"
         }
@@ -158,7 +155,58 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.btnSubmit ->{
-                // TODO "Implement btn submit"
+                if(mSelectedOptionPosition == 0) {
+                    mCurrentPosition++
+
+                    when {
+                        mCurrentPosition <= mQuestionsList!!.size -> {
+                            setQuestion()
+                        }
+                        else -> {
+                            Toast.makeText(this, "마지막 문제 입니다.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                } else {
+                    val question = mQuestionsList?.get(mCurrentPosition - 1)
+                    if(question!!.correctAnswer != mSelectedOptionPosition) {
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    }
+                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                    if(mCurrentPosition == mQuestionsList!!.size){
+                        btnSubmit?.text = "제출"
+                    } else {
+                        btnSubmit?.text = "다음 문제"
+                    }
+
+                    mSelectedOptionPosition = 0
+                }
+            }
+        }
+    }
+
+    // 정답 선택 시 TextView 색상 변경 메서드
+    private fun answerView(answer: Int, drawableView: Int) {
+        when(answer) {
+            1 -> {
+                tvOptionOne?.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
+            }
+            2 -> {
+                tvOptionTwo?.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
+            }
+            3 -> {
+                tvOptionThree?.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
+            }
+            4 -> {
+                tvOptionFour?.background = ContextCompat.getDrawable(
+                    this, drawableView
+                )
             }
         }
     }
