@@ -26,5 +26,7 @@
             ?attr/colorPrimaryVariant
         </item>
         <!-- Customize your theme here. -->
+
+        <item name="android:windowFullscreen">true</item>
     </style>
 </resources>
