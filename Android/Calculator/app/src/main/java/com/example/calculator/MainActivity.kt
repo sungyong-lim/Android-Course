@@ -92,19 +92,92 @@ class MainActivity : AppCompatActivity() {
     
     // 등호 버튼 클릭 시 호출되는 메서드
     private fun onEqual(v: View) {
+
         // 마지막 입력 값이 숫자이면 실행되면 "TextView"에 텍스트를 스트링 형식으로 받아오는 제어문
         if(lastNumeric) {
             var tvValue = tvInput?.text.toString()
+            var prefix = ""
+
 
             try {
-                // "tvValue"를 "split"을 사용해서 해당 연산자를 기준으로 나눔 99 - 5
-                val splitValue = tvValue.split("-")
+                if(tvValue.startsWith("-")) {
+                    prefix = "-"
+                    tvValue = tvValue.substring(1) //"tvValue"의 첫 입력 값을 지운다는 뜻 즉, index 1번 부터 문자열을 다시 만든다는 의미
+                }
 
-                var oneValue = splitValue[0] // 첫번째 숫자 99
-                var twoValue = splitValue[1] // 두번째 숫자  5
-                var result = oneValue.toDouble() - twoValue.toDouble()
+                if(tvValue.contains("+")) {
+                    val splitValue = tvValue.split("+")
 
-                tvInput?.text = (oneValue.toDouble() - twoValue.toDouble()).toString()
+                    var oneValue = splitValue[0]
+                    var twoValue = splitValue[1]
+
+                    if(prefix.isNotEmpty()) {
+                        oneValue = prefix + oneValue
+                    }
+
+                    if(oneValue.contains(".") || twoValue.contains(".")){
+                        tvInput?.text = (oneValue.toDouble() + twoValue.toDouble()).toString()
+
+                    } else {
+                        tvInput?.text = (oneValue.toInt() + twoValue.toInt()).toString()
+
+                    }
+
+                } else if(tvValue.contains("-")) { // 뺄셈 연산
+                    // "tvValue"를 "split"을 사용해서 해당 연산자를 기준으로 나눔 99 - 5
+                    val splitValue = tvValue.split("-")
+
+                    var oneValue = splitValue[0] // 첫번째 숫자 99
+                    var twoValue = splitValue[1] // 두번째 숫자  5
+//                    var result = oneValue.toDouble() - twoValue.toDouble()
+
+                    // prefix가 비어있지 않다면 즉, 첫번째 숫자가 -이면 실행
+                    if(prefix.isNotEmpty()) {
+                        oneValue = prefix + oneValue
+                    }
+                    if(oneValue.contains(".") || twoValue.contains(".")) {
+                        tvInput?.text = (oneValue.toDouble() - twoValue.toDouble()).toString()
+
+                    } else {
+                        tvInput?.text = (oneValue.toInt() - twoValue.toInt()).toString()
+                    }
+
+
+                } else if(tvValue.contains("*")) {
+                    val splitValue = tvValue.split("*")
+
+                    var oneValue = splitValue[0]
+                    var twoValue = splitValue[1]
+
+                    if(prefix.isNotEmpty()) {
+                        oneValue = prefix + oneValue
+                    }
+
+                    if(oneValue.contains(".") || twoValue.contains(".")){
+                        tvInput?.text = (oneValue.toDouble() * twoValue.toDouble()).toString()
+
+                    } else {
+                        tvInput?.text = (oneValue.toInt() * twoValue.toInt()).toString()
+
+                    }
+                } else {
+                    val splitValue = tvValue.split("/")
+
+                    var oneValue = splitValue[0]
+                    var twoValue = splitValue[1]
+
+                    if(prefix.isNotEmpty()) {
+                        oneValue = prefix + oneValue
+                    }
+
+                    if(oneValue.contains(".") || twoValue.contains(".")) {
+                        tvInput?.text = (oneValue.toDouble() / twoValue.toDouble()).toString()
+                    }  else {
+
+                        tvInput?.text = (oneValue.toInt() / twoValue.toInt()).toString()
+                    }
+                }
+
 
             }catch (e: ArithmeticException) { // 산술적 오류 => 0으로 나누거나 산술적으로 계산이 불가능하면 실행
                 e.printStackTrace()

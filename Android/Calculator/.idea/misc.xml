@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/Calculator/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/Calculator/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1465" />
+        <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/Calculator/app/src/main/res/layout/activity_main.xml" value="0.2" />
       </map>
     </option>
   </component>
