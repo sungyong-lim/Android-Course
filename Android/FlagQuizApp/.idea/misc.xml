@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/FlagQuizApp/app/src/main/res/drawable/btnbg.xml" value="0.1715" />
         <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/FlagQuizApp/app/src/main/res/drawable/default_option_border_bg.xml" value="0.1" />
+        <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/FlagQuizApp/app/src/main/res/drawable/selected_option_border_bg.xml" value="0.1" />
         <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/FlagQuizApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/User/IdeaProjects/Kotlin/Android/FlagQuizApp/app/src/main/res/layout/activity_questions.xml" value="0.1" />
       </map>
