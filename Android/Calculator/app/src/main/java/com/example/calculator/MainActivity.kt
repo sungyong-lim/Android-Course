@@ -124,13 +124,7 @@ class MainActivity : AppCompatActivity() {
                         oneValue = prefix + oneValue
                     }
 
-                    if(oneValue.contains(".") || twoValue.contains(".")){
-                        tvInput?.text = (oneValue.toDouble() + twoValue.toDouble()).toString()
-
-                    } else {
-                        tvInput?.text = (oneValue.toInt() + twoValue.toInt()).toString()
-
-                    }
+                    tvInput?.text = removeZeroAfterDot((oneValue.toDouble() + twoValue.toDouble()).toString())
 
                 } else if(tvValue.contains("-")) { // 뺄셈 연산
                     // "tvValue"를 "split"을 사용해서 해당 연산자를 기준으로 나눔 99 - 5
@@ -144,13 +138,8 @@ class MainActivity : AppCompatActivity() {
                     if(prefix.isNotEmpty()) {
                         oneValue = prefix + oneValue
                     }
-                    if(oneValue.contains(".") || twoValue.contains(".")) {
-                        tvInput?.text = (oneValue.toDouble() - twoValue.toDouble()).toString()
 
-                    } else {
-                        tvInput?.text = (oneValue.toInt() - twoValue.toInt()).toString()
-                    }
-
+                   tvInput?.text = removeZeroAfterDot((oneValue.toDouble() - twoValue.toDouble()).toString())
 
                 } else if(tvValue.contains("*")) {
                     val splitValue = tvValue.split("*")
@@ -162,14 +151,10 @@ class MainActivity : AppCompatActivity() {
                         oneValue = prefix + oneValue
                     }
 
-                    if(oneValue.contains(".") || twoValue.contains(".")){
-                        tvInput?.text = (oneValue.toDouble() * twoValue.toDouble()).toString()
+                    tvInput?.text = removeZeroAfterDot((oneValue.toDouble() * twoValue.toDouble()).toString())
 
-                    } else {
-                        tvInput?.text = (oneValue.toInt() * twoValue.toInt()).toString()
 
-                    }
-                } else {
+                } else if(tvValue.contains("/")) {
                     val splitValue = tvValue.split("/")
 
                     var oneValue = splitValue[0]
@@ -179,12 +164,7 @@ class MainActivity : AppCompatActivity() {
                         oneValue = prefix + oneValue
                     }
 
-                    if(oneValue.contains(".") || twoValue.contains(".")) {
-                        tvInput?.text = (oneValue.toDouble() / twoValue.toDouble()).toString()
-                    }  else {
-
-                        tvInput?.text = (oneValue.toInt() / twoValue.toInt()).toString()
-                    }
+                    tvInput?.text = removeZeroAfterDot((oneValue.toDouble() / twoValue.toDouble()).toString())
                 }
 
 
@@ -194,6 +174,14 @@ class MainActivity : AppCompatActivity() {
         }
 
    }
+
+    // 계산 결과가 Int 형식이면 .0을 제거하는 메서드
+    private fun removeZeroAfterDot(result: String): String {
+        var value = result
+        if(result.contains(".0"))  // 만약 계산식 뒤에 .0이 붙어있으면 실행 ex) 10.0, 652.0, 대신 78.1은 안됨
+            value = result.substring(0, result.length - 2) // "value"에 0부터 마지막 2개의 문자열을 제외한 값이 출력
+        return value
+    }
 
     // 연산자가 추가됐는지 확인하는 메서드
     private fun isOperatorAdded(value: String): Boolean {
