@@ -48,6 +48,9 @@ class MainActivity : AppCompatActivity() {
         btnSub.setOnClickListener { onOperator(btnSub) }
         btnMul.setOnClickListener { onOperator(btnMul) }
         btnDiv.setOnClickListener { onOperator(btnDiv) }
+        
+        // 등호 버튼 onClick 
+        btnEqual.setOnClickListener { onEqual(btnEqual) }
 
     }
 
@@ -86,9 +89,29 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    
+    // 등호 버튼 클릭 시 호출되는 메서드
+    private fun onEqual(v: View) {
+        // 마지막 입력 값이 숫자이면 실행되면 "TextView"에 텍스트를 스트링 형식으로 받아오는 제어문
+        if(lastNumeric) {
+            var tvValue = tvInput?.text.toString()
 
+            try {
+                // "tvValue"를 "split"을 사용해서 해당 연산자를 기준으로 나눔 99 - 5
+                val splitValue = tvValue.split("-")
 
+                var oneValue = splitValue[0] // 첫번째 숫자 99
+                var twoValue = splitValue[1] // 두번째 숫자  5
+                var result = oneValue.toDouble() - twoValue.toDouble()
 
+                tvInput?.text = (oneValue.toDouble() - twoValue.toDouble()).toString()
+
+            }catch (e: ArithmeticException) { // 산술적 오류 => 0으로 나누거나 산술적으로 계산이 불가능하면 실행
+                e.printStackTrace()
+            }
+        }
+
+   }
 
     // 연산자가 추가됐는지 확인하는 메서드
     private fun isOperatorAdded(value: String): Boolean {
