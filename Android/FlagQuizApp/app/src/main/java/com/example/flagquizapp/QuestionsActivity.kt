@@ -1,5 +1,6 @@
 package com.example.flagquizapp
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,9 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mQuestionsList: ArrayList<Question>? = null
     private var mSelectedOptionPosition: Int = 0
 
+    private var mUserName: String? = null // 사용자 이름 변수
+    private var mCorrectAnswers: Int = 0 // 맞힌 문제 개수 변수
+
     private var tvQuestion: TextView? = null
     private var ivImage: ImageView? = null
     private var progressBar: ProgressBar? = null
@@ -30,6 +34,12 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_questions)
+
+        // "MainActivity"에서 "PutExtra"로 보낸 데이터를 받아옴
+        // "intent"로 지금의 액티비티에 "USER_NAME"의 위치에서 세부사항을 가져올 수 있음
+        // "getStringExtra"를 사용해 문자열의 형태로 가져옴
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
+
 
         tvQuestion = findViewById(R.id.tvQuestion)
         ivImage = findViewById(R.id.ivImage)
@@ -163,15 +173,23 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                             setQuestion()
                         }
                         else -> {
-                            Toast.makeText(this, "마지막 문제 입니다.", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, ResultActivity::class.java)
+                            intent.putExtra(Constants.USER_NAME, mUserName)
+                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                            intent.putExtra(Constants.TOTAL_QUESTION, mQuestionsList?.size)
+                            startActivity(intent)
+                            finish()
                         }
                     }
                 } else {
                     val question = mQuestionsList?.get(mCurrentPosition - 1)
                     if(question!!.correctAnswer != mSelectedOptionPosition) {
-                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg) // 틀릴경우
+                    }else {
+                        mCorrectAnswers++
                     }
-                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+                    // else 문제 넣지 않는 이유는 정답을 맞추든 안맞추든 정답을 표시해주기 때문
+                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)// 맞힌경우
 
                     if(mCurrentPosition == mQuestionsList!!.size){
                         btnSubmit?.text = "제출"
