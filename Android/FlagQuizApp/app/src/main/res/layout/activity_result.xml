@@ -22,11 +22,12 @@
         android:text="결과"/>
 
     <ImageView
-        android:id="@+id/tv_trophy"
+        android:id="@+id/iv_score"
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="image"
-        android:src="@drawable/ic_trophy"/>
+        android:src="@drawable/ic_highscore"/>
 
     <TextView
         android:id="@+id/tv_congratulations"
