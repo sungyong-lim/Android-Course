@@ -53,8 +53,10 @@ fun main() {
     val itr = arrayList2.iterator()
 
     // "itr"에 요소가 없을 때 까지 반복 즉, "arrayList2" 자체라고 생가하면 됨
+    // "itr"에 다음 값이 있으면 println 으로 다음 값을 출력
     while(itr.hasNext()) {
         println(itr.next())
+        // itr.previous() 는 다음 값이 없으면 뒤에 값으로 이동
     }
 
     // arrayList2 크기 출력
